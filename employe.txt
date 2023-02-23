@@ -1,0 +1,75 @@
+table employe
+
+create table employe(empno int,emname varchar(20),job varchar(20),mgr int,hiredate date,sal float,comm varchar(19),deptno int,primary key(empno));
+
+
+insert into employe(empno,emname,job,mgr,hiredate,sal,comm,deptno)
+values(8369,'SMITH','CLERK',8902,'1990-12-18',800,'NULL',20),
+(8499,'ANYA','SALESMAN',8698,'1991-02-20',1600.00300.00,20),
+(8521,'SETH','SALESMAN');
+insert into employe(empno,emname,job,mgr,hiredate,sal,comm,deptno)
+values(8365,'SCOTT','CLERK',8902,'1990-12-19',900,'NULL',40);
+insert into employe(empno,emname,job,mgr,hiredate,sal,comm,deptno)
+values(8330,'MILAN','CLERK',8902,'1999-11-19',900,'NULL',40);
+insert into employe(empno,emname,job,mgr,hiredate,sal,comm,deptno)
+values(8334,'MILAN JOHN','CLERK',8902,'1999-11-19',2200,'NULL',40);
+insert into employe(empno,emname,job,mgr,hiredate,sal,comm,deptno)
+values(8921,'JOHN','MANAGER',8902,'1999-11-19',2200,'NULL',40);
+insert into employe(empno,emname,job,mgr,hiredate,sal,comm,deptno)
+values(8926,'AMAN','MANAGER',8902,'1999-11-19',2200,'NULL',40);
+insert into employe(empno,emname,job,mgr,hiredate,sal,comm,deptno)
+values(8927,'AMAN MUHAMMAD','NOT GIVEN',8902,'1999-11-19',2200,'NULL',60);
+
+
+
+a. Write a query to display EName and Sal of employees whose salary are greater than or equal to 2200?
+
+   select emname,sal from employe where sal >=2200;
+
+b. Write a query to display details of employs who are not getting commission?   
+
+
+  select *from employe where comm='NULL';
+
+c. Write a query to display employee name and salary of those employees who don’t havetheir salary in range of 2500 to 4000?
+
+    select emname,sal from employe where sal not between 2500 and 4000;
+
+d. Write a query to display the name, job title and salary of employees who don’t have manager?
+   
+            select emname,job,sal from employe where job != 'MANAGER';
+
+ e. Write a query to display the name of employee whose name contains “A” as third alphabet?
+ 
+
+    		 select * from employe where emname like '__A%';
+
+f. Write a query to display the name of employee whose name contains “T” as last alphabet?
+
+             select emname from employe where emname like '%T';
+
+
+
+
+g. Write a query to display the name of employee whose name contains ”M” as First and“L” as third alphabet?
+
+     select emname from employe where emname like 'M_L%';
+
+
+h. Write a query to display details of employs with the text “Not given”, if commission is null?
+
+             select *from employe where comm='NULL' and job='NOT GIVEN';
+
+
+
+    
+
+
+
+
+
+
+
+
+ 
+
