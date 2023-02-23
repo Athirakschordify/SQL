@@ -1,0 +1,62 @@
+create table employedetails(empid int primary key,fname varchar(20),lname varchar(20),salary float,joiningdate timestamp ,department varchar(20),gender varchar(20));
+insert into employedetails(empid,fname,lname,salary,joiningdate,department,gender) 
+values(1,'Vikas','Ahlawat',600000.00,'1998-01-23 12:45:56','IT','Male'),
+(2,'rithika','Ahlawat',600000.00,'1998-01-23 12:45:56','IT','Male'),
+(3,'ashish','Ahlawat',600000.00,'1998-01-23 12:45:56','IT','Male'),
+(4,'nikhil','Ahlawat',600000.00,'1998-01-23 12:45:56','IT','Male'),
+(5,'anish','Ahlawat',600000.00,'1998-01-23 12:45:56','IT','Male');
+
+create table projectdetails(projectid int primary key,empid int,projectname varchar(30));
+insert into projectdetails(projectid,empid,projectname)
+values(1,1,'Task Track'),(2,1,'CLP'),(3,1,'Survey Management'),
+(4,2,'HR'),(5,3,'Task Track'),(6,3,'GRS'),(7,3,'DDS');
+insert into projectdetails(projectid,empid,projectname)
+values(9,6,'GL Management');
+
+
+
+
+1. Get employee name, project name order by firstname from "EmployeeDetail" and "ProjectDetail" for those employee which have assigned project already.
+
+ select fname,lname,projectname from employedetails inner join projectdetails on employedetails.empid=projectdetails.empid order by fname;
+
+2. Get employee name, project name order by firstname from "EmployeeDetail" and "ProjectDetail" for all employee even they have not assigned project.
+
+
+ 
+ select fname,projectname from employedetails left outer join projectdetails on employedetails.empid=projectdetails.empid  order by fname;
+
+
+
+
+
+
+
+
+
+3. Get all project name even they have not matching any employeeid, in left table, order by firstname from "EmployeeDetail" and "ProjectDetail".
+
+ 
+select projectname from employedetails right outer join projectdetails on employedetails.empid=projectdetails.empid order by fname;
+
+
+4. Get complete record(employeename, project name) from both tables([EmployeeDetail],[ProjectDetail]), if no match found in any table then show NULL.
+  
+   
+   select fname,projectname from employedetails full outer join projectdetails on employedetails.empid=projectdetails.empid order by fname;
+
+5. Write a query to find out the project name which is not assigned to any employee( tables :- [EmployeeDetail],[ProjectDetail]).
+
+   select projectname from employedetails right outer join projectdetails on employedetails.empid=projectdetails.empid where fname is null;
+
+6. Write down the query to fetch EmployeeName & Project who has assign more than one project.
+
+  select fname, projectname from employedetails inner join projectdetails on employedetails.empid=projectdetails.empid where employedetails.empid in(select empid from projectdetails group by empid having count(*)>1);
+
+
+   
+
+
+ 
+
+
