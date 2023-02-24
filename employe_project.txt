@@ -2,9 +2,9 @@ create table employedetails(empid int primary key,fname varchar(20),lname varcha
 insert into employedetails(empid,fname,lname,salary,joiningdate,department,gender) 
 values(1,'Vikas','Ahlawat',600000.00,'1998-01-23 12:45:56','IT','Male'),
 (2,'rithika','Ahlawat',600000.00,'1998-01-23 12:45:56','IT','Male'),
-(3,'ashish','Ahlawat',600000.00,'1998-01-23 12:45:56','IT','Male'),
-(4,'nikhil','Ahlawat',600000.00,'1998-01-23 12:45:56','IT','Male'),
-(5,'anish','Ahlawat',600000.00,'1998-01-23 12:45:56','IT','Male');
+(3,'ashish','Jain',530000.00,'1698-08-23 10:45:56','HR','Female'),
+(4,'nikhil','Ahlawat',270000.00,'1998-01-23 12:45:56','IT','Male'),
+(5,'anish','Ahlawat',770000.00,'1979-01-23 12:45:56','Payrole','Male');
 
 create table projectdetails(projectid int primary key,empid int,projectname varchar(30));
 insert into projectdetails(projectid,empid,projectname)
@@ -24,8 +24,7 @@ values(9,6,'GL Management');
 
 
  
- select fname,projectname from employedetails left outer join projectdetails on employedetails.empid=projectdetails.empid  order by fname;
-
+ select fname,projectname from employedetails left outer join projectdetails on employedetails.empid=projectdetails.empid where projectname is null order by fname;
 
 
 
